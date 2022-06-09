@@ -1,0 +1,33 @@
+.info{
+    display: none;
+}
+.icon:hover ~ .info{
+    display: block;
+}
+
+.info2{
+    display: none;
+}
+.icon2:hover ~ .info2{
+    display: block;
+}
+
+body {
+	text-align: center;
+}
+
+.icons {
+	padding-top: 5px;
+}
+
+.button {
+	padding-top: 10px;
+}
+
+.middle {
+	padding-top: 100px;
+}
+
+.text {
+	padding-top: 10px;
+}
