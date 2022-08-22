@@ -2,79 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Password Generator</title>
-    <!-- Import Pyscript -->
-    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
-    <link href="styles.css" rel="stylesheet">
+    <title>Password generator</title>
+
+    <meta charset="utf-8">
+    <script src="https://cdn.jsdelivr.net/npm/brython@3/brython.min.js">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/brython@3/brython_stdlib.js">
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="fav icon" href="https://cdn-icons-png.flaticon.com/512/6195/6195699.png" />
+
 </head>
-<body>
-    <py-script>
-from js import document,alert
-import random
+<body onload="brython()">
+<script src = "password_main.py" type="text/python">
 
-upper_letter = [chr(letter) for letter in range(65, 91)]
-lower_letter = [chr(letter) for letter in range(97, 123)]
-number = [chr(letter) for letter in range(48, 58)]
-special_characters = ["!", "@", "#", "$", "(", ")"]
+</script>
+
+<h1>Welcome to Password Generator</h1>
+<h2 id="password">Your password is: </h2>
+<form>
+     <label> Numbers (0-9): </label>
+    <input type="checkbox" id="option1"><br>
+
+    <label> Letters:</label>
+    <input type="checkbox" id="option2"><br>
+
+    <label> Special symbol</label>
+    <input type="checkbox" id="option3"><br>
+
+    <label> Length: </label>
+    <input type="text" id="option4" value= 0 >
+</form>
 
 
-the_password= []
+<button id="generate">Generate</button>
+<button id="clear">Clear</button>
 
-<!--Function for generate passwrd with lower and upper letter and numbers -->
-def first_generation():
-    pyscript.write("print_password","")
-    for _ in range(1, 5):
-        the_password.append(random.choice(upper_letter))
-        the_password.append(random.choice(lower_letter))
-        the_password.append(random.choice(number))
-    print_password(the_password)
-
-<!--Function for generate password with lower and upper letter, numbers and special characters-->
-def second_generation():
-    pyscript.write("print_password","")
-    for _ in range(1, 4):
-        the_password.append(random.choice(upper_letter))
-        the_password.append(random.choice(lower_letter))
-        the_password.append(random.choice(number))
-        the_password.append(random.choice(special_characters))
-    print_password(the_password)
-
-def print_password(list_password):
-    global the_password
-    random.shuffle(list_password)
-    password = "".join(list_password)
-    pyscript.write("print_password", f"Your password is: {password}")
-    the_password = []
-    return password
-
-def check_choice(*ags, **kws):
-    choice = document.getElementById('the_choose').value;
-    if choice == "1":
-        first_generation()
-    elif choice == "2":
-        second_generation()
-
-    </py-script>
-<h1>Hello, Welcome on Password generation</h1>
-<div>
-    <label >Information about type of password generation:</label>
-    <div class="icons">
-    <button class="icon">First type information</button>
-    <button class="icon2">Second type information</button>
-    <label class="info">Generate password with lower and upper letter and numbers</label>
-    <label class="info2">Generate password with lower and upper letter, numbers and special characters</label>
-    </div>
-<div class="middle">
-    <h3 class = "print_password" id = "print_password"></h3>
-    <label>Write your choice here: <br> 1 or 2</label><br>
-    <div class="text">
-    <input id="the_choose" type="text" />
-    </div>
-</div>
-</div>
-
-<div class="button">
-    <button id="generate" type="submit"  class="btn btn-primary" pys-onClick="check_choice">Generate password</button>
-</div>
 </body>
 </html>
